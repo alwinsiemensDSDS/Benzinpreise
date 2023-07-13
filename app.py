@@ -11,7 +11,6 @@ st.title("Spritpreise in ihrer Nähe!⛽")
 sprit_sorte = st.selectbox("", tanker_api.sprittypes.keys())
 radius = st.number_input("Umkreis (km)", min_value=0, max_value=25, step=1, value = 3)
 place = st.text_input("Ortsbeschreibung", placeholder="Lemgo")
-st.button("Daten erfassen")
 dataframe_loaded = False
 
 # retrieve dataframe with stations from api
