@@ -3,7 +3,7 @@ from geopy.geocoders import Nominatim
 import requests
 import pandas as pd
 
-TANKERKOENIG_API_KEY = "90d138e0-6a4a-26dc-996b-de0551c4fbbd"
+TANKERKOENIG_API_KEY = st.secrets["TANKERKOENIG_API_KEY"]
 USER_AGENT = "studentproject_spritpreise"
 ENABLED = True
 
