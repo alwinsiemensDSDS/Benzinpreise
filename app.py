@@ -56,15 +56,14 @@ if(dataframe_loaded):
         map = px.scatter_mapbox(dataframe, lat = "lat", lon = "lng", hover_name= "name", color="price", size= "price", color_continuous_scale="oxy", zoom=10, hover_data = ["street"])
         map.update_layout(mapbox_style="open-street-map", autosize=True)
         map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-        st.plotly_chart(map)
+        st.plotly_chart(map, use_container_width=True)
 
         st.write("---")
 
         st.info("Tabellenansicht")
-        st.write("Klicke die einzelnen Spalten an um zu filtern.")
+        st.write("Klicke die einzelnen Spalten an, um sie zu sortieren.")
 
         tableview = dataframe.drop(columns=["id", "lat", "lng"])
-
-        st_aggrid.AgGrid(tableview, columns_auto_size_mode=st_aggrid.ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)
+        st.dataframe(tableview, use_container_width=True)
 else:
     st.info("Bitte geben Sie ihre gewünschten Parameter ein.")
