@@ -2,9 +2,10 @@ from enum import Enum
 from geopy.geocoders import Nominatim
 import requests
 import pandas as pd
+import streamlit as st
 
 TANKERKOENIG_API_KEY = st.secrets["TANKERKOENIG_API_KEY"]
-USER_AGENT = "studentproject_spritpreise"
+USER_AGENT = st.secrets["GEOPY_USERAGENT"]
 ENABLED = True
 
 sprittypes = {
