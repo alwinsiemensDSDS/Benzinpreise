@@ -1,4 +1,3 @@
-from enum import Enum
 from geopy.geocoders import Nominatim
 import requests
 import pandas as pd
@@ -16,7 +15,6 @@ sprittypes = {
 
 def get_SpritType_From_SelectionText(selectionText):
     return sprittypes.get(selectionText)
-
 
 def get_all_tankstellen_in_specific_radius_json(place_string, search_radius:int, sprit_type):
     if(ENABLED == False):
@@ -44,7 +42,7 @@ def place_to_geocode(placestring):
         "longitude": str(location.longitude)
     }
 
-### Not used APIS
+### Not used APIS below
 
 def get_prices_from_specific_tankstellen_json(tankstellen_id_list):
     tankstellen_ids_string = ""
