@@ -52,7 +52,8 @@ if(dataframe_loaded):
         st.write("---")
 
         st.info("Kartenansicht")
-
+        st.write("Klicke auf die Punkte um mehr zu erfahren.")
+        
         map = px.scatter_mapbox(dataframe, lat = "lat", lon = "lng", hover_name= "name", color="price", size= "price", color_continuous_scale="oxy", zoom=10, hover_data = ["street"])
         map.update_layout(mapbox_style="open-street-map", autosize=True)
         map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
