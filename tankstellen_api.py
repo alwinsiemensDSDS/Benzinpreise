@@ -41,22 +41,3 @@ def place_to_geocode(placestring):
         "latitude": str(location.latitude),
         "longitude": str(location.longitude)
     }
-
-### Not used APIS below
-
-def get_prices_from_specific_tankstellen_json(tankstellen_id_list):
-    tankstellen_ids_string = ""
-    for id in tankstellen_id_list:
-        tankstellen_ids_string += "{},".format(id)
-    tankstellen_ids_string = tankstellen_ids_string[:-1]
-    ## API Call
-    prices_api_url = "https://creativecommons.tankerkoenig.de/json/prices.php?ids={}&apikey={}".format(tankstellen_ids_string, TANKERKOENIG_API_KEY)
-    response = requests.get(prices_api_url)
-    json_data = response.json
-    return json_data
-
-def get_details_to_a_specifix_tankstelle_json(id):
-    details_url = "https://creativecommons.tankerkoenig.de/json/detail.php?id={}&apikey={}".format(id,TANKERKOENIG_API_KEY)
-    response = requests.get(details_url)
-    json_data = response.json()
-    return json_data
