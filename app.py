@@ -17,13 +17,13 @@ dataframe_loaded = False
 if(place != "" and radius > 0.0 and radius < 25.0 and sprit_sorte != ""):
     dataframe = tanker_api.get_all_tankstellen_in_specific_radius_json(place, radius, sprit_sorte)
     if(not dataframe.empty):
-        dataframe = dataframe.dropna()
+        dataframe = dataframe.dropna(subset=["price"]) # drop all null values
         dataframe_loaded = True
     else:
         st.error("Error: Leider wurden keine Daten gefunden! Bitte ändern sie ihre Eingaben.")
 
 if(dataframe_loaded):
-    # Key Values from dataframe
+    # Generate Key Values from dataframe
     with st.container():
         lowestprice_colum, nearestprice_colum = st.columns(2)
         with lowestprice_colum:
@@ -47,7 +47,7 @@ if(dataframe_loaded):
             st.metric(label=nearest_price_dataset["name"].values[0],value=price_formatted, delta=None)
             st.dataframe(nearest_price_dataset[["name", "place", "street", "isOpen"]], hide_index=True)
 
-    # Visuals from Dataframe
+    # Generate Visuals from Dataframe
     with st.container():
         st.write("---")
 
